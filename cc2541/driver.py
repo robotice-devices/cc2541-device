@@ -30,8 +30,6 @@ def main():
 
     args = parser.parse_args()
     
-    print(args)
-    
     bluetooth_adr = getattr(args, "address", sys.argv[1]) 
 
     pp(get_data({"address":bluetooth_adr}))

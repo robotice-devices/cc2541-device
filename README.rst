@@ -9,12 +9,23 @@ Robotice driver for SensorTag a Bluetooth Low Engery (BLE GATT) device
 Requirements
 ------------
 
+* bluez
 * gatttool
 * pexpect
 
 
 Usage
 -----
+
+search device MAC
+
+.. code-block:: bash
+
+	hcitool lescan
+	LE Scan ...
+	78:A5:04:8C:25:A7 (unknown)
+
+get data
 
 .. code-block:: bash
 
