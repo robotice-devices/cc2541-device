@@ -1,7 +1,7 @@
 
-======
-CC2541
-======
+==========
+CC2541 BLE
+==========
 
 Robotice driver for SensorTag a Bluetooth Low Engery (BLE GATT) device
 
@@ -29,11 +29,11 @@ get data
 
 .. code-block:: bash
 
-    python driver.py 78:A5:04:8C:25:A7
+    python cc2541 78:A5:04:8C:25:A7
 
     in while cycle
 
-    python driver.py 78:A5:04:8C:25:A7 -r
+    python cc2541 78:A5:04:8C:25:A7 -r
 
 
 Read More
