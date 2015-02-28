@@ -1,5 +1,5 @@
 
-from .cc2541 import CC2541
+from cc2541.cc2541 import CC2541
 
 METRIC_STR = "cc2541.{0}"
 

@@ -4,7 +4,7 @@ import pexpect
 
 LOG = logging.getLogger(__name__)
 
-from .utils import *
+from cc2541.utils import *
 
 
 class CC2541(object):
