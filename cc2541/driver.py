@@ -5,7 +5,7 @@ import sys
 import argparse
 import optparse
 
-from cc2541.sensor import get_data
+from sensor import get_data
 
 parser = argparse.ArgumentParser(description='BLE Robotice Driver.')
 parser.add_argument('address', nargs='?', help='Address')
