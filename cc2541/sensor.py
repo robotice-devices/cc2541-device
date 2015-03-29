@@ -3,12 +3,14 @@ from cc2541 import CC2541
 
 def get_data(sensor):
 
+    name = sensor.get('name')
     mac = sensor.get('mac')
 
     data = []
 
-    cc2541 = CC2541(cc2541)
-    METRIC_STR = "cc2541.{0}.{0}"
+    cc2541 = CC2541(mac)
+
+    METRIC_STR = "%s.{0}.{0}" % name
 
     data.append((METRIC_STR.format(mac, "temperature"), cc2541.temperature))
     data.append((METRIC_STR.format(mac, "humidity"), cc2541.humidity))
