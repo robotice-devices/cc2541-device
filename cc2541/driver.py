@@ -1,33 +1,27 @@
-import os
-import six
+#!/srv/robotice/bin/python
+
 import sys
+import logging
 
-import argparse
-import optparse
+from oslo.config import cfg
+from oslo.config import types
 
-from sensor import get_data
+import sensor
 
-parser = argparse.ArgumentParser(description='BLE Robotice Driver.')
-parser.add_argument('address', nargs='?', help='Address')
-parser.add_argument('-r', '--repeat', action='store_true', help="Repeat", default=False)
+logging.basicConfig(level=logging.DEBUG)
 
-def pp(data):
+common_opts = [
+    cfg.Opt('name',
+            short='n',
+            default="cc2541",
+            help='Sensor name'),
+    cfg.Opt('mac',
+            short='m',
+            help='MAC address'),
+]
 
-    for datum in data:
-        print str(datum)
+CONF = cfg.CONF
+CONF.register_cli_opts(common_opts)
+CONF(sys.argv[1:])
 
-def main():
-
-    args = parser.parse_args()
-    
-    bluetooth_adr = getattr(args, "address", sys.argv[1]) 
-
-    pp(get_data({"address":bluetooth_adr}))
-
-    if args.repeat:
-
-        while True:
-            pp(get_data({"address":bluetooth_adr}))
-
-if __name__ == "__main__":
-    main()
+print(sensor.get_data(CONF))

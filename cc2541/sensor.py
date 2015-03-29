@@ -1,20 +1,20 @@
 
 from cc2541 import CC2541
 
-METRIC_STR = "cc2541.{0}"
-
-
 def get_data(sensor):
 
-    results = []
+    mac = sensor.get('mac')
 
-    sensor = CC2541(sensor["address"])
+    data = []
 
-    results.append((METRIC_STR.format("temperature"), sensor.temperature))
-    results.append((METRIC_STR.format("humidity"), sensor.humidity))
-    results.append((METRIC_STR.format("magnet"), sensor.magnet))
-    results.append((METRIC_STR.format("barometer"), sensor.barometer))
-    results.append((METRIC_STR.format("gyroscope"), sensor.gyroscope))
-    results.append((METRIC_STR.format("accelerometer"), sensor.accelerometer))
+    cc2541 = CC2541(cc2541)
+    METRIC_STR = "cc2541.{0}.{0}"
 
-    return results
+    data.append((METRIC_STR.format(mac, "temperature"), cc2541.temperature))
+    data.append((METRIC_STR.format(mac, "humidity"), cc2541.humidity))
+    data.append((METRIC_STR.format(mac, "magnet"), cc2541.magnet))
+    data.append((METRIC_STR.format(mac, "barometer"), cc2541.barometer))
+    data.append((METRIC_STR.format(mac, "gyroscope"), cc2541.gyroscope))
+    data.append((METRIC_STR.format(mac, "accelerometer"), cc2541.accelerometer))
+
+    return data
