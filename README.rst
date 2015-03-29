@@ -5,27 +5,29 @@ CC2541 BLE
 
 Robotice driver for SensorTag a Bluetooth Low Engery (BLE GATT) device
 
-
 Requirements
 ------------
 
-* bluez
-* gatttool
-* pexpect
-
+* pkg bluez
+* pkg gatttool
+* pip pexpect
 
 Usage
 -----
 
-search device MAC
+Search device MAC
 
 .. code-block:: bash
 
-	hcitool lescan
-	LE Scan ...
-	78:A5:04:8C:25:A7 (unknown)
+    hcitool lescan
+    # LE Scan ...
+    # 78:A5:04:8C:25:A7 (unknown)
+    # 78:A5:04:8C:25:A7 (SensorTag)
+    # 78:A5:04:8C:25:A7 (unknown)
+    # 78:A5:04:8C:25:A7 (SensorTag)
+    # ...
 
-get data
+Get sensor data
 
 .. code-block:: bash
 
@@ -34,7 +36,6 @@ get data
     in while cycle
 
     python cc2541 78:A5:04:8C:25:A7 -r
-
 
 Read More
 ---------
