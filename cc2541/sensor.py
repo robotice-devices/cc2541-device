@@ -18,5 +18,6 @@ def get_data(sensor):
     data.append((METRIC_STR.format(mac, "barometer"), cc2541.barometer))
     data.append((METRIC_STR.format(mac, "gyroscope"), cc2541.gyroscope))
     data.append((METRIC_STR.format(mac, "accelerometer"), cc2541.accelerometer))
-
+    # ensure that connection is closed
+    cc2541.close()
     return data

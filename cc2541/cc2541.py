@@ -7,8 +7,6 @@ LOG = logging.getLogger(__name__)
 
 from utils import *
 
-import pickle
-
 
 class CC2541(object):
 
@@ -49,14 +47,19 @@ class CC2541(object):
         tool.expect('\[LE\]>')
         return tool
 
+    def __del__(self):
+        self.close()
+
+    def close(self):
+        """close shell stream
+        """
+        self.connection.close(force=True)
+
     @property
     def connection(self):
         con = getattr(self, "_connection", None)
         if not con:
             self._connection = self.connect()
-            with open('./pid', 'w') as f:
-                pickle.dump({"pid": self._connection.pid}, f)
-                print self._connection.pid
         return self._connection
 
     @property
