@@ -42,7 +42,7 @@ class CC2541(object):
 
         try:
             tool.sendline('connect')
-            tool.expect('\[CON\].*>')
+            #tool.expect('\[CON\].*>')
         except Exception as e:
             raise e
         tool.sendline('char-write-cmd 0x29 01')
